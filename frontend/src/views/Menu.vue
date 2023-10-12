@@ -1,30 +1,7 @@
 <template>
-  <div>
-    <v-carousel v-model="model">
-      <v-carousel-item
-          v-for="(color, i) in colors"
-          :key="color"
-      >
-        <v-sheet
-            :color="color"
-            height="100%"
-            tile
-        >
-          <v-row
-              class="fill-height"
-              align="center"
-              justify="center"
-          >
-            <v-img style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover;" src="@/assets/banner1.png"></v-img>
-            <div class="text-h2" style="z-index: 2">
-              Ну к примеру акция №{{ i + 1 }}
-            </div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
+  <v-container class="mt-8">
+    <h1>Меню кофейни</h1>
 
-    <v-container>
       <h2 class="text-h4 my-4">Сезонное меню</h2>
       <v-row>
         <v-col
@@ -85,9 +62,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
 
-    <v-container>
       <h2 class="text-h4 my-4">Классическое меню</h2>
       <v-row>
         <v-col
@@ -148,22 +123,6 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
-  </div>
-</template>
 
-<script>
-export default {
-  name: 'Home',
-  data: () => ({
-    model: 0,
-    colors: [
-      'primary',
-      'secondary',
-      'yellow darken-2',
-      'red',
-      'orange',
-    ],
-  }),
-}
-</script>
+  </v-container>
+</template>
