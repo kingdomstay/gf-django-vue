@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
       app
-      color="brown"
+      color="brown darken-3"
   >
     <v-container>
 
@@ -10,15 +10,19 @@
           justify="space-between"
       >
         <v-app-bar-title>
-          <h3 class="text-h4 white--text">G&F</h3>
+          <v-img src="@/assets/logo.svg"></v-img>
         </v-app-bar-title>
         <div>
-          <v-btn class="deep-orange darken-1 white--text mx-1" depressed>
-            Главная
-          </v-btn>
-          <v-btn class="white black--text mx-1" depressed>
-            Меню
-          </v-btn>
+          <router-link to="/" v-slot="{href, isExactActive, navigate}">
+            <v-btn @click="navigate" :href="href" :class="[isExactActive && 'deep-orange darken-1 white--text']" class="black--text mx-1" depressed>
+              Главная
+            </v-btn>
+          </router-link>
+          <router-link to="menu" v-slot="{href, isExactActive, navigate}">
+            <v-btn @click="navigate" :href="href" :class="[isExactActive && 'deep-orange darken-1 white--text']" class="black--text mx-1" depressed>
+              Меню
+            </v-btn>
+          </router-link>
           <v-btn class="white black--text mx-1" depressed>
             Личный кабинет
           </v-btn>
