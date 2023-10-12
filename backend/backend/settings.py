@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu.apps.MenuConfig',
     'aboutCompany.apps.AboutcompanyConfig',
-    'loyalty.apps.LoyaltyConfig'
+    'loyalty.apps.LoyaltyConfig',
 ]
 
 MIDDLEWARE = [

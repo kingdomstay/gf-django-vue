@@ -4,4 +4,4 @@ from .models import Drink
 class DrinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Drink
-        fields = ('title',)
+        fields = ('name','address','photo')

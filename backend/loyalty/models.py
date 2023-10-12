@@ -2,13 +2,19 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Loyalty(models.Model):
-    points = models.IntegerField
-    stars = models.IntegerField
+    name = models.CharField(max_length=30)
+    points = models.SmallIntegerField()
+    stars = models.SmallIntegerField()
+    def __str__(self):
+        return self.name
 
-class Coupons(models.Model):
-    descriptions = models.TextField
-    discount = models.IntegerField(
+class Coupon(models.Model):
+    name = models.CharField(max_length=30)
+    descriptions = models.TextField()
+    discount = models.SmallIntegerField(
         validators=[
             MaxValueValidator(100),
             MinValueValidator(1)]
     )
+    def __str__(self):
+        return self.name
