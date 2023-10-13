@@ -1,12 +1,14 @@
 from rest_framework import serializers
 from .models import Coupon, Loyalty
 
+
 class LoyaltySerializer(serializers.ModelSerializer):
     class Meta:
         model = Loyalty
-        fields = ('points','stars')
+        fields = "__all__"
+
 
 class CouponsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coupon
-        fields = ('descriptions','discount')
+        fields = "__all__"

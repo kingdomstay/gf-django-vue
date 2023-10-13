@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import Location
 
+
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ('title','description','price','photo','cat_id')
+        fields = "__all__"
