@@ -181,6 +181,9 @@ DJOSER = {
 #     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 # }
 
+FIXTURE_DIRS = [
+    "fixtures",
+]
 
 CORS_ORIGIN_ALLOW_ALL = True
 

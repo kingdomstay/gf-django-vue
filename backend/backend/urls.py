@@ -4,6 +4,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from menu.views import DrinkViewSet, login_view
 from loyalty.views import LoyaltyViewSet, CouponViewSet, login_view
 from aboutCompany.views import LocationViewSet, login_view
+
 from users.views import VisitorViewSet, login_view
 from rest_framework import routers
 from rest_framework import permissions
@@ -30,7 +31,7 @@ router.register(r"drink", DrinkViewSet)
 router.register(r"loyalty", LoyaltyViewSet)
 router.register(r"coupon", CouponViewSet)
 router.register(r"location", LocationViewSet)
-router.register(r"visitor", VisitorViewSet)
+router.register(r"user", VisitorViewSet)
 
 
 urlpatterns = [
