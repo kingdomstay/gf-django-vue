@@ -1,21 +1,53 @@
-"""backend URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
+from rest_framework.authtoken.views import obtain_auth_token
+from menu.views import DrinkViewSet, login_view
+from loyalty.views import LoyaltyViewSet, CouponViewSet, login_view
+from aboutCompany.views import LocationViewSet, login_view
+
+from users.views import VisitorViewSet, login_view
+from rest_framework import routers
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
+SchemaView = get_schema_view(
+    openapi.Info(
+        title="Your Project API",
+        default_version="v1",
+        description="API documentation",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
+
+router = routers.DefaultRouter()
+router.register(r"drink", DrinkViewSet)
+router.register(r"loyalty", LoyaltyViewSet)
+router.register(r"coupon", CouponViewSet)
+router.register(r"location", LocationViewSet)
+router.register(r"user", VisitorViewSet)
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
+    path("login-view/", login_view),
+    path("auth/", include("djoser.urls")),
+    re_path(r"^auth/", include("djoser.urls.authtoken")),
+    # re_path("auth/", include("rest_framework_social_oauth2.urls"))
+    # path("api/v1/loyaltylist/", LoyaltyAPIView.as_view()),
+    # path("api/v1/couponslist/", CouponsAPIView.as_view()),
+    # path("api/v1/locationlist/", LocationAPIView.as_view()),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns() + static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
