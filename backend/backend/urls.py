@@ -20,6 +20,9 @@ SchemaView = get_schema_view(
         title="Your Project API",
         default_version="v1",
         description="API documentation",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
+        license=openapi.License(name="BSD License"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
@@ -44,6 +47,7 @@ urlpatterns = [
     # path("api/v1/loyaltylist/", LoyaltyAPIView.as_view()),
     # path("api/v1/couponslist/", CouponsAPIView.as_view()),
     # path("api/v1/locationlist/", LocationAPIView.as_view()),
+    path(r'swagger/', SchemaView.with_ui('swagger', cache_timeout=0)),
 ]
 
 
