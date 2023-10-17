@@ -1,8 +1,9 @@
 from rest_framework import serializers
+
 from .models import *
 
 
-class VisitorSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Visitor
+        model = Profile
         fields = "__all__"
