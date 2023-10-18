@@ -10,6 +10,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class DrinkSerializer(serializers.ModelSerializer):
+    cat = CategorySerializer()
+
     class Meta:
         model = Drink
-        fields = "__all__"
+        fields = [
+            "title",
+            "description",
+            "price",
+            "photo",
+            "cat",
+        ]
