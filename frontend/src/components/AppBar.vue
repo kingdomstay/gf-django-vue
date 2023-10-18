@@ -23,12 +23,16 @@
               Меню
             </v-btn>
           </router-link>
-          <v-btn class="white black--text mx-1" depressed>
-            Личный кабинет
-          </v-btn>
-          <v-btn class="white black--text mx-1" depressed>
-            Контакты
-          </v-btn>
+          <router-link to="about" v-slot="{href, isExactActive, navigate}">
+            <v-btn @click="navigate" :href="href" :class="[isExactActive && 'deep-orange darken-1 white--text']" class="black--text mx-1" depressed>
+              О кофейне
+            </v-btn>
+          </router-link>
+          <router-link to="account" v-slot="{href, isExactActive, navigate}">
+            <v-btn @click="navigate" :href="href" :class="[isExactActive && 'deep-orange darken-1 white--text']" class="black--text mx-1" depressed>
+              Личный кабинет
+            </v-btn>
+          </router-link>
         </div>
       </v-row>
     </v-container>
