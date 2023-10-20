@@ -10,6 +10,7 @@ from loyalty.views import CouponViewSet, login_view
 from menu.views import DrinkViewSet, login_view
 from rest_framework import permissions, routers
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 from users.views import Profile, ProfileViewSet, login_view
 
 SchemaView = get_schema_view(
@@ -35,13 +36,16 @@ router.register(r"user", ProfileViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("v1/drf-auth/", include("rest_framework.urls")),
     path("api/", include(router.urls)),
     path("login-view/", login_view),
     path("auth/", include("djoser.urls")),
-    # path(r"^account/", include("users.urls")),
     re_path(r"auth/", include("djoser.urls.authtoken")),
+    # re_path(r"auth/", include("rest_framework_social_oauth2.urls")),
     path(r"swagger/", SchemaView.with_ui("swagger", cache_timeout=0)),
-    # url(r'^edit/$', views.edit, name='edit'),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
 ]
 
 
