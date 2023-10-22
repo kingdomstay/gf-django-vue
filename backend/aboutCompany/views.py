@@ -1,12 +1,14 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Location
-from .serializers import LocationSerializer
-from rest_framework.decorators import action
-from rest_framework import viewsets
 import logging
+
 from django.http.response import HttpResponse
+from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import Location, News
+from .serializers import LocationSerializer, NewsSerializer
 
 Logger = logging.getLogger("main")
 
@@ -19,6 +21,16 @@ class LocationViewSet(viewsets.ModelViewSet):
     def get(self, request, pk=None):
         location = Location.objects.get(pk=pk)
         return Response({"location": location.location})
+
+
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+
+    @action(methods=["get"], detail=True)
+    def get(self, request, pk=None):
+        news = News.objects.get(pk=pk)
+        return Response({"news": news.news})
 
 
 def login_view(request):

@@ -13,3 +13,17 @@ class Location(models.Model):
         verbose_name = "Местоположение"
         verbose_name_plural = "Местоположение"
         ordering = ["name", "address"]
+
+
+class News(models.Model):
+    title = models.CharField(max_length=70, verbose_name="Название новости")
+    description = models.TextField(verbose_name="Описание")
+    photo = models.FileField(verbose_name="Фотография")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Новостной баннер"
+        verbose_name_plural = "Новостной баннер"
+        ordering = ["title", "description"]
