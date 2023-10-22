@@ -6,9 +6,7 @@ class Drink(models.Model):
     description = models.TextField(verbose_name="Описание")
     price = models.SmallIntegerField(verbose_name="Стоимость")
     photo = models.FileField(verbose_name="Картинка")
-    cat = models.ForeignKey(
-        "Category", null=True, on_delete=models.PROTECT, verbose_name="Категория"
-    )
+    cat = models.ForeignKey("Category", null=True, on_delete=models.PROTECT, verbose_name="Категория")
 
     def __str__(self):
         return self.title
@@ -28,4 +26,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категории позиций"
         verbose_name_plural = "Категории позиций"
-        ordering = ["id", "name"]
+        ordering = [
+            "id",
+            "name",
+        ]
