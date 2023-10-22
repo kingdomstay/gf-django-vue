@@ -24,7 +24,7 @@
         </v-card>
       </v-col>
     </v-row>
-
+    <h1>Меню кофейни</h1>
       <h2 class="text-h4 my-4">Сезонное меню</h2>
       <v-row>
         <v-col
@@ -149,7 +149,6 @@
 
   </v-container>
 </template>
-
 <script>
 import axios from "axios";
 

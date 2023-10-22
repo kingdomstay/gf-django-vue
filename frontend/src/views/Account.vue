@@ -26,6 +26,8 @@ export default {
       router.push('/login')
     }
   }
+export default {
+  name: "Account"
 }
 </script>
 
