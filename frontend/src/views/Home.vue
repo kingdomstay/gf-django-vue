@@ -25,6 +25,10 @@
     </v-carousel>
 
     <v-container>
+      <h1 class="my-4">Меню кофейни</h1>
+      <v-row>
+        <v-col
+            v-for="item in menu" :key="item.id"
       <h2 class="text-h4 my-4">Сезонное меню</h2>
       <v-row>
         <v-col
@@ -34,6 +38,15 @@
           <v-card>
             <v-img
                 height="250"
+                :src="item.photo"
+            ></v-img>
+            <v-card-title>{{ item.title }}</v-card-title>
+            <v-card-text>
+              <div>{{ item.description }}</div>
+            </v-card-text>
+            <v-divider class="mx-4"></v-divider>
+            <v-card-text>
+              <v-chip class="orange darken-4 white--text mx-1"><h3>{{ item.price }} ₽</h3></v-chip>
                 src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
             ></v-img>
             <v-card-title>Капучино</v-card-title>
@@ -173,6 +186,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'Home',
   data: () => ({
@@ -184,6 +198,15 @@ export default {
       'red',
       'orange',
     ],
+    menu: []
+  }),
+  mounted() {
+    axios
+        .get("http://127.0.0.1:8000/api/drink/")
+        .then(response => {
+          this.menu = response.data;
+        });
+  }
   }),
 }
 </script>
