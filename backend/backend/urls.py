@@ -35,6 +35,7 @@ router.register(r"user", ProfileViewSet)
 
 
 urlpatterns = [
+    # path('google-sign-in/', views.signInWithGoogle, name='google-sign-in'),
     path("admin/", admin.site.urls),
     path("v1/drf-auth/", include("rest_framework.urls")),
     path("api/", include(router.urls)),
