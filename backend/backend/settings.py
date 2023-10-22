@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "djoser",
     "corsheaders",
     # "django_celery_results",
-    # "corsheaders",
     "oauth2_provider",
     "social_django",
     "rest_framework_social_oauth2",
@@ -171,11 +170,14 @@ REST_FRAMEWORK = {
     ),
 }
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_HOST_USER = "iouy"
-# EMAIL_HOST_PASSWORD = "iouy"
-# EMAIL_PORT = 587
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "aleksej.perfilov03@mail.ru"
+EMAIL_HOST_PASSWORD = "NTqVEsPB0xNNrs0FCDSU"
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "#/password/reset/confirm/{uid}/{token}",
