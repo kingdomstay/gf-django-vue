@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+  backend:
+        tty: true 
+        build: backend
+        command: python manage.py runserver 0.0.0.0:8000
+        ports:
+            - 8000:8000
+        volumes:
+            - ./backend:/root/server

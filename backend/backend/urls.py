@@ -1,4 +1,4 @@
-from aboutCompany.views import LocationViewSet, login_view
+from aboutCompany.views import LocationViewSet, NewsViewSet, login_view
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -32,9 +32,11 @@ router.register(r"drink", DrinkViewSet)
 router.register(r"coupon", CouponViewSet)
 router.register(r"location", LocationViewSet)
 router.register(r"user", ProfileViewSet)
+router.register(r"news", NewsViewSet)
 
 
 urlpatterns = [
+    # path('google-sign-in/', views.signInWithGoogle, name='google-sign-in'),
     path("admin/", admin.site.urls),
     path("v1/drf-auth/", include("rest_framework.urls")),
     path("api/", include(router.urls)),
