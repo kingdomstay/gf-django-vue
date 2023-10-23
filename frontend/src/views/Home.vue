@@ -2,11 +2,10 @@
   <div>
     <v-carousel v-model="model">
       <v-carousel-item
-          v-for="(color, i) in colors"
-          :key="color"
+          v-for="post in news"
+          :key="post.id"
       >
         <v-sheet
-            :color="color"
             height="100%"
             tile
         >
@@ -15,9 +14,9 @@
               align="center"
               justify="center"
           >
-            <v-img style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover;" src="@/assets/banner1.png"></v-img>
+            <v-img style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover;" :src="post.photo"></v-img>
             <div class="text-h2" style="z-index: 2">
-              Ну к примеру акция №{{ i + 1 }}
+              <router-link :to="{ name: 'news', params: { id: post.id } }">{{post.title}}</router-link>
             </div>
           </v-row>
         </v-sheet>
@@ -78,6 +77,7 @@ import axios from "axios";
 export default {
   name: 'Home',
   data: () => ({
+    news: null,
     model: 0,
     colors: [
       'primary',
@@ -89,6 +89,8 @@ export default {
     menu: []
   }),
   mounted() {
+    axios.get("http://127.0.0.1:8000/api/news/")
+        .then(response => (this.news = response.data))
     axios
         .get("http://127.0.0.1:8000/api/drink/")
         .then(response => {
