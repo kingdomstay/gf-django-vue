@@ -29,9 +29,6 @@
       <v-row>
         <v-col
             v-for="item in menu" :key="item.id"
-      <h2 class="text-h4 my-4">Сезонное меню</h2>
-      <v-row>
-        <v-col
             cols="12"
             sm="4"
         >
@@ -47,116 +44,6 @@
             <v-divider class="mx-4"></v-divider>
             <v-card-text>
               <v-chip class="orange darken-4 white--text mx-1"><h3>{{ item.price }} ₽</h3></v-chip>
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col
-            cols="12"
-            sm="4"
-        >
-          <v-card>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col
-            cols="12"
-            sm="4"
-        >
-          <v-card>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-
-    <v-container>
-      <h2 class="text-h4 my-4">Классическое меню</h2>
-      <v-row>
-        <v-col
-            cols="12"
-            sm="4"
-        >
-          <v-card>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col
-            cols="12"
-            sm="4"
-        >
-          <v-card>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col
-            cols="12"
-            sm="4"
-        >
-          <v-card>
-            <v-img
-                height="250"
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-            ></v-img>
-            <v-card-title>Капучино</v-card-title>
-            <v-card-text>
-              <div>Итальянский напиток, состоящий из Эспрессо, слоя взбитого молока и слоя молочной пенки.</div>
-            </v-card-text>
-            <v-divider class="mx-4"></v-divider>
-            <v-card-text>
-              <v-chip class="orange darken-4 white--text"><h3>199 ₽</h3></v-chip>
             </v-card-text>
           </v-card>
         </v-col>
@@ -187,6 +74,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   name: 'Home',
   data: () => ({
@@ -207,6 +95,5 @@ export default {
           this.menu = response.data;
         });
   }
-  }),
 }
 </script>
