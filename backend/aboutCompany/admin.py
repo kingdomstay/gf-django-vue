@@ -16,5 +16,12 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ("title",)
 
 
+class LoggerAdmin(admin.ModelAdmin):
+    list_display = ("viewed", "http_user_agent")
+    list_display_links = ("viewed", "http_user_agent")
+    search_fields = ("request_method",)
+
+
 admin.site.register(Location, LocationAdmin)
 admin.site.register(News, NewsAdmin)
+admin.site.register(Logger, LoggerAdmin)

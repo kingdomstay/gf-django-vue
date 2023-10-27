@@ -13,6 +13,8 @@ from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from backend.middleware.logger import LoggerMiddleware
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -61,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "backend.middleware.logger.LoggerMiddleware"
 ]
 
 CORS_ALLOWED_ORIGINS = [
